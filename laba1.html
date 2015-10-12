@@ -7,14 +7,16 @@
 	<script>
 		var canvas=document.getElementById('less01');
 		var ctx=canvas.getContext('2d');
-		var k=5;
-		for (j=0; j<11; j++) {
+		var Scale=5;
+		var Length=100;
+		for (tg=0; tg>=-1; tg-=0.1) 
+		{
 			var y=0;
-			var d = 0;
-			for (x=0; x<100; x++) {
-				if (d>5) { y+=1; d-=10; }
-				ctx.fillRect(k*x, k*y, k*1, k*1);
-				d+=j;
+			for (x=0; x<Length; x++) 
+			{
+				y=-1*tg*x;
+				if (tg%1>=0.5) {y++;}
+				ctx.fillRect(Scale*x, Scale*y, Scale*1, Scale*1);
 			}
 		}
 	</script>
