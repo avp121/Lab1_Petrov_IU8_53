@@ -26,35 +26,41 @@
 для окружностей</h1></p>
 <canvas id='less01.1' width='700' height='700'>
 <script>
-var canvas = document.getElementById('less01.1');
-var ctx = canvas.getContext('2d');
-var t=3; 
-var F=-59;
-var dfs=6;
-var dfd=-114;
-var x0=50, y0=50;
-var x=-31, y=0;
-while(x+y<=0)
-{
-ctx.fillRect(t*(x0+x), t*(y0-y), t*1, t*1);
-ctx.fillRect(t*(x0+x), t*(y0+y), t*1, t*1);
-ctx.fillRect(t*(x0-x), t*(y0-y), t*1, t*1);
-ctx.fillRect(t*(x0-x), t*(y0+y), t*1, t*1);
-ctx.fillRect(t*(x0+y), t*(y0-x), t*1, t*1);
-ctx.fillRect(t*(x0+y), t*(y0+x), t*1, t*1);
-ctx.fillRect(t*(x0-y), t*(y0-x), t*1, t*1);
-ctx.fillRect(t*(x0-y), t*(y0+x), t*1, t*1); 
-if( F>0 )
-{
-F+=dfd;
-dfd+=4;
-x++;
-}
-else { F+=dfs; }
-dfs+=4;
-dfd+=4;
-y++;
-}
+	var canvas = document.getElementById('less01.1');
+	var ctx = canvas.getContext('2d');
+	var Scale=8;
+	var x0=50, y0=50;
+	var Rad=31;
+	var x=-1*Rad, y=0;
+	var F=x^2+(y+1)^2+(x+1)^2+(y+1)^2-2*Rad^2;
+	var dfs=4*y+6;
+	var dfd=4*x+4*y+10;
+	while(x+y<=0)
+	{
+		ctx.fillRect(Scale*(x0+x), Scale*(y0-y), Scale*1, Scale*1);
+		ctx.fillRect(Scale*(x0+x), Scale*(y0+y), Scale*1, Scale*1);
+		ctx.fillRect(Scale*(x0-x), Scale*(y0-y), Scale*1, Scale*1);
+		ctx.fillRect(Scale*(x0-x), Scale*(y0+y), Scale*1, Scale*1);
+		ctx.fillRect(Scale*(x0+y), Scale*(y0-x), Scale*1, Scale*1);
+		ctx.fillRect(Scale*(x0+y), Scale*(y0+x), Scale*1, Scale*1);
+		ctx.fillRect(Scale*(x0-y), Scale*(y0-x), Scale*1, Scale*1);
+		ctx.fillRect(Scale*(x0-y), Scale*(y0+x), Scale*1, Scale*1); 
+		if( F>0 )
+		{
+			F+=dfd;
+			dfs+=4;
+			dfd+=8;
+			x++;
+			y++;
+		}
+		else 
+		{
+			F+=dfs;
+			dfs+=4;
+			dfd+=4;
+			y++;
+		}
+	}
 
 </script>
 </canvas>
